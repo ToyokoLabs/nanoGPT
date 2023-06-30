@@ -15,9 +15,9 @@ Then, run this command to commence training cycles. Adjust parameters as needed.
 
 ```python train.py config/train_custom.py --device=cuda --compile=False --eval_iters=20 --log_interval=1 --block_size=64 --batch_size=12 --n_layer=4 --n_head=4 --n_embd=128 --max_iters=2000 --lr_decay_iters=2000 --dropout=0.0```
 
-
 Generating inference commands
 -----------------------------
+
 
 After training process finishes, run this command to obtain samples of generated text:
 
@@ -29,7 +29,7 @@ Results
 -------
 
 
-<insert table with the following format>
+
 
 
 The tables below record run time for different parameter combinations
@@ -48,9 +48,6 @@ the generated text is compared with the reference input on a scale of 0 to 1.
 | 10000 | 64 | 8.16 | [output 5](out/10kb64t1551l3.txt) | 0.244 |
 | 10000 | 128 | 14:20 | [output 6](out/10kb128t14l27.txt) | 0.202 |
 | 10000 | 256 | 59:00 | [output 7](out/10kb256t59l17.txt) | 0.169 |
-
-
-
 
 
 
