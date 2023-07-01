@@ -23,6 +23,12 @@ After training process finishes, run this command to obtain samples of generated
 
 ```python sample.py --out_dir=out-custom-char```
 
+Calculating metrics
+-----------------------------
+
+To calculate BLEU and ROUGE metrics, run the following command (might take a while)
+
+```python metrics.py abstractsCLEAN.txt out/filename.txt```
 
 Results
 -------
