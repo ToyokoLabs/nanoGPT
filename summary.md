@@ -27,27 +27,25 @@ After training process finishes, run this command to obtain samples of generated
 Results
 -------
 
-
-
-
-
 The tables below record run time for different parameter combinations
-as well as samples of the generated text. The BLEU score (4-gram) reflects how similar
+as well as samples of the generated text. The BLEU score (4-gram) and ROUGE score 
+(2-gram & Longest common subsequence) reflects how similar
 the generated text is compared with the reference input on a scale of 0 to 1.
 
+| Iterations | Block Size | Time | Result | BLEU-4 | ROUGE-2 | ROUGE-L |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2000 | 64 | 1:45 | [output 1](out/2kb64t4l5.txt) | 0.145 | 0.135 | 0.301 |
+| 4000 | 64 | 3:24 | [output 2](out/4kb64t6m5l4.txt) | 0.174 | 0.135 | 0.325 |
+| 10000 | 64 | 8:16 | [output 3](out/10kb64t1551l3.txt) | 0.244 |  0.172 | 0.331 |
+| 40000 | 64 | 32:25 | [output 4](out/40kb64t32l26.txt) | 0.164 | 0.180 | 0.328 |
 
-| Iterations | Block Size | Time | Result | BLEU score |
-| --- | --- | --- | --- | --- |
-| 2000 | 64 | 1:45 | [output 1](out/2kb64t4l5.txt) | 0.145 |
-| 4000 | 64 | 3:24 | [output 2](out/4kb64t6m5l4.txt) | 0.174 |
-| 10000 | 64 | 8:16 | [output 3](out/10kb64t1551l3.txt) | 0.244 |
-| 40000 | 64 | 32:25 | [output 4](out/40kb64t32l26.txt) | 0.164 |
+| Iterations | Block Size  | Time | Result | BLEU-4 | ROUGE-2 | ROUGE-L |
+| --- | --- | --- | --- | --- | --- | --- |
+| 10000 | 64 | 8.16 | [output 5](out/10kb64t1551l3.txt) | 0.244 |  0.172 | 0.331 |
+| 10000 | 128 | 14:20 | [output 6](out/10kb128t14l27.txt) | 0.202 | 0.151 | 0.310 |
+| 10000 | 256 | 59:00 | [output 7](out/10kb256t59l17.txt) | 0.169 | 0.144 | 0.307 |
 
-| Iterations | Block Size  | Time | Result | BLEU score
-| --- | --- | --- | --- | --- |
-| 10000 | 64 | 8.16 | [output 5](out/10kb64t1551l3.txt) | 0.244 |
-| 10000 | 128 | 14:20 | [output 6](out/10kb128t14l27.txt) | 0.202 |
-| 10000 | 256 | 59:00 | [output 7](out/10kb256t59l17.txt) | 0.169 |
+
 
 
 

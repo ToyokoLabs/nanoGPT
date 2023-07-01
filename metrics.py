@@ -14,8 +14,8 @@ import re
 import nltk
 import sys
 import random
-import rouge_metric
-
+import evaluate
+from rouge_metric import PyRouge
 
 def bleu(ref, gen):
     '''
@@ -29,7 +29,7 @@ def bleu(ref, gen):
     ref_bleu = [sent.split() for sent in ref]
     gen_bleu = [sent.split() for sent in gen]
 
-    ref_bleu = [random.sample(ref_bleu, 5000) for i in range(len(gen_bleu))]
+    ref_bleu = [random.sample(ref_bleu, 10000) for i in range(len(gen_bleu))]
 
     cc = nltk.translate.bleu_score.SmoothingFunction()
     # adjust weight
@@ -38,13 +38,6 @@ def bleu(ref, gen):
 
     return score_bleu
 
-rouge = rouge_metric.PyRouge(rouge_n=(1, 2), rouge_l=True, rouge_w=False, rouge_s=False, rouge_su=False)
-
-def find_my_rouge(text):
-    #not used currently
-    hypotheses = [[text.split()]]
-    score = rouge.evaluate_tokenized(hypotheses, [[ref_sentences]])
-    return score
 
 alphabets = "([A-Za-z])"
 prefixes = "(Mr|St|Mrs|Ms|Dr|vs)[.]"
@@ -115,5 +108,17 @@ with open(sys.argv[2], 'r') as file:
     gen = file.read().replace('\n', '')
 gen_sentences = split_into_sentences(gen)
 
-print('BLEU:', bleu(ref_sentences, gen_sentences))
-#print('ROUGE:', find_my_rouge(gen_sentences))
+
+
+
+ref_rouge = [random.sample(ref_sentences, 1000) for i in range(len(gen_sentences))]
+
+
+roug = PyRouge(rouge_n=(1,4), rouge_l=True, rouge_w=False, rouge_s=False, rouge_su=False)
+
+
+
+rouge = evaluate.load('rouge')
+#print('BLEU:', bleu(ref_sentences, gen_sentences))
+print('ROUGE:', rouge.compute(predictions = gen_sentences, references = ref_rouge))
+#roug.evaluate
