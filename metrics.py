@@ -8,6 +8,10 @@
     ROUGE focuses on recall: how much the words (and/or n-grams)
     in the human references appear in the candidate model outputs.
 
+    To calculate metrics, run python metrics.py [reference].txt out/[candidate].txt
+
+    Where reference is the text trained on, candidate is the generated text.
+
 '''
 
 import re
@@ -113,12 +117,11 @@ gen_sentences = split_into_sentences(gen)
 
 ref_rouge = [random.sample(ref_sentences, 1000) for i in range(len(gen_sentences))]
 
-
-roug = PyRouge(rouge_n=(1,4), rouge_l=True, rouge_w=False, rouge_s=False, rouge_su=False)
+#roug = PyRouge(rouge_n=(1,4), rouge_l=True, rouge_w=False, rouge_s=False, rouge_su=False)
 
 
 
 rouge = evaluate.load('rouge')
-#print('BLEU:', bleu(ref_sentences, gen_sentences))
+print('BLEU:', bleu(ref_sentences, gen_sentences))
 print('ROUGE:', rouge.compute(predictions = gen_sentences, references = ref_rouge))
 #roug.evaluate
